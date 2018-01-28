@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import {
   AppRegistry,
   Text,
@@ -8,11 +9,17 @@ import {
   renderItem,
   Dimensions,
   TextInput,
-  StyleSheet
+  StyleSheet,
+  ScrollView
 } from "react-native";
 import {
-  Header,
   SearchBar,
+  Card,
+  Button,
+  Header,
+  Badge,
+  Tile,
+  Divider,
   Tab,
   Icon
 } from "react-native-elements";
@@ -47,45 +54,107 @@ export default class HomeScreen extends React.Component {
 
   changeTab(selectedTab) {
     this.setState({ selectedTab })
+    this.state = {
+      curTime: null
+    };
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        curTime: moment(new Date()).format("YYYY-MM-DD hh:mm:ss")
+      });
+    }, 1000);
   }
 
 
   render() {
     const { selectedTab } = this.state
     return (
-      <View style={styles.container}>
-        <FlatList
-          data={[
-            {
-              itemId: "1",
-              url:
-                "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg",
-              name: "White Mug",
-              price: "5",
-              timestamp: "14/02/2018"
-            },
-            {
-              itemId: "2",
-              url:
-                "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
-              name: "Dices",
-              price: "2",
-              timestamp: "14/02/2018"
-            }
-          ]}
-          keyExtractor={item => item.itemId}
-          renderItem={({ item }) => (
-            <View style={{ alignItems: "center" }}>
-              <Image
-                style={{ width: 250, height: 250 }}
-                source={{ uri: item.url }}
-              />
-              <Text>{item.name}</Text>
-              <Text>{item.price}</Text>
-            </View>
-          )}
-        />
-
+      <View style={{ flex: 1 }}>
+        <ScrollView>
+          <FlatList
+            style={{ paddingBottom: 20 }}
+            data={[
+              {
+                itemId: "1",
+                url:
+                  "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg",
+                name: "White Mug",
+                price: "5",
+                timestamp: "2018-01-30 01:20:30"
+              },
+              {
+                itemId: "2",
+                url:
+                  "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
+                name: "Dices",
+                price: "2",
+                timestamp: "2018-01-31 01:20:30"
+              },
+              {
+                itemId: "3",
+                url:
+                  "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
+                name: "Dices",
+                price: "2",
+                timestamp: "2018-02-01 01:20:30"
+              },
+              {
+                itemId: "4",
+                url:
+                  "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
+                name: "Dices",
+                price: "2",
+                timestamp: "2018-02-02 01:20:30"
+              }
+            ]}
+            keyExtractor={item => item.itemId}
+            renderItem={({ item }) => (
+              <Tile
+                imageSrc={{ uri: item.url }}
+                title={item.name}
+                contentContainerStyle={{
+                  height: 100,
+                  marginBottom: 10,
+                  marginLeft: 10,
+                  marginRight: 10
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Details", {
+                    id: item.itemId
+                  });
+                }}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: "column",
+                    justifyContent: "flex-start"
+                  }}
+                >
+                  <Text style={{ marginLeft: 8, marginBottom: 3 }}>
+                    $ {this.format(item.price)}
+                  </Text>
+                  <View
+                    style={{
+                      flex: 1,
+                      flexDirection: "row",
+                      justifyContent: "flex-start"
+                    }}
+                  >
+                    <Icon name="schedule" />
+                    <Text
+                      style={{ marginLeft: 10, marginTop: 2, color: "red" }}
+                    >
+                      {this.calculateTimeLeft(item.timestamp)}
+                    </Text>
+                  </View>
+                </View>
+              </Tile>
+            )}
+          />
+        </ScrollView>
         <Tabs selected={this.state.page} style={{ backgroundColor: 'white' }}>
           <View>
             <Icon name="gift" type="font-awesome" containerStyle={{ justifyContent: 'center', alignItems: 'center', marginBottom: 2 }} color={'#ff880a'} />
@@ -105,8 +174,29 @@ export default class HomeScreen extends React.Component {
     );
   }
 
+  format = price => {
+    return parseFloat(price).toFixed(2);
+  };
+
+  calculateTimeLeft = deadline => {
+    let diff = moment(deadline, "YYYY-MM-DD hh:mm:ss").diff(
+      moment(this.state.curTime, "YYYY-MM-DD hh:mm:ss"),
+      "days"
+    );
+    if (diff < 1) {
+      diff = moment(deadline, "YYYY-MM-DD hh:mm:ss").diff(
+        moment(this.state.curTime, "YYYY-MM-DD hh:mm:ss"),
+        "hours"
+      );
+
+      return diff <= 1 ? diff + " hour left" : diff + " hours left";
+    } else {
+      return diff == 1 ? diff + " day left" : diff + " days left";
+    }
+  };
+
   _handlePress = () => {
-    this.props.navigation.navigate("Home");
+    this.props.navigation.navigate("MyDonut");
   };
 }
 

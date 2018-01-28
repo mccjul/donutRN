@@ -1,15 +1,15 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export default class MyDonutScreen extends React.Component {
+export default class DonateScreen extends React.Component {
   static navigationOptions = {
-    title: "Home"
+    title: "Details"
   };
 
   render() {
     return (
       <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-        <Text onPress={this._handlePress}>DonutScreen!</Text>
+        <Text onPress={this._handlePress}>DetailsScreen!</Text>
       </View>
     );
   }
