@@ -30,12 +30,21 @@ yarn start
 
 The console will display a QR Code and an IP Address to allow access to the app via the user's preferred browsing device.
 
-#### Viewing the 
+#### Viewing the app
+
+With the Expo Client installed, scan the QR code displayed on the console or manually type the provided IP address.
+Expo will then build and display the app.
 
 ## Built With
 
+* React Native
+* Visual Studio Code
+* NestJS
+* Coolors
+* Proto.io
+
 ## Authors
 
-## License
-
-## Acknowledments
+* Steven Lao
+* Julian McCarthy
+* Karely Lu
