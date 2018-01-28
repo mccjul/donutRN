@@ -23,16 +23,16 @@ import {
   Tab,
   Icon
 } from "react-native-elements";
-import { StackNavigator } from 'react-navigation';
-import { Constants } from 'expo';
-import Tabs from 'react-native-tabs';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import { StackNavigator } from "react-navigation";
+import { Constants } from "expo";
+import Tabs from "react-native-tabs";
+import { TabViewAnimated, TabBar, SceneMap } from "react-native-tab-view";
 
 const searchStyle = StyleSheet.create({
   header: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#e1e8ee'
-  },
+    backgroundColor: "#e1e8ee"
+  }
 });
 
 const data = ["this"];
@@ -46,14 +46,13 @@ export default class HomeScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state =
-      {
-        selectedTab: 'home'
-      }
+    this.state = {
+      selectedTab: "home"
+    };
   }
 
   changeTab(selectedTab) {
-    this.setState({ selectedTab })
+    this.setState({ selectedTab });
     this.state = {
       curTime: null
     };
@@ -67,9 +66,8 @@ export default class HomeScreen extends React.Component {
     }, 1000);
   }
 
-
   render() {
-    const { selectedTab } = this.state
+    const { selectedTab } = this.state;
     return (
       <View style={{ flex: 1 }}>
         <ScrollView>
@@ -155,22 +153,54 @@ export default class HomeScreen extends React.Component {
             )}
           />
         </ScrollView>
-        <Tabs selected={this.state.page} style={{ backgroundColor: 'white' }}>
+        <Tabs selected={this.state.page} style={{ backgroundColor: "white" }}>
           <View>
-            <Icon name="gift" type="font-awesome" containerStyle={{ justifyContent: 'center', alignItems: 'center', marginBottom: 2 }} color={'#ff880a'} />
-            <Text name='Donations' style={{color: '#ff880a', fontSize: 11}}>Donations</Text>
+            <Icon
+              name="gift"
+              type="font-awesome"
+              containerStyle={{
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 2
+              }}
+              color={"#ff880a"}
+            />
+            <Text name="Donations" style={{ color: "#ff880a", fontSize: 11 }}>
+              Donations
+            </Text>
           </View>
           <View>
-            <Icon name="ticket" type="font-awesome" containerStyle={{ justifyContent: 'center', alignItems: 'center', marginBottom: 2 }} color={'#5e6977'} />
-            <Text name='Bids' style={{fontSize: 11}}>Bids</Text>
+            <Icon
+              name="ticket"
+              type="font-awesome"
+              containerStyle={{
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 2
+              }}
+              color={"#5e6977"}
+            />
+            <Text name="Bids" style={{ fontSize: 11 }}>
+              Bids
+            </Text>
           </View>
           <View>
-            <Icon name="comments" type="font-awesome" containerStyle={{ justifyContent: 'center', alignItems: 'center', marginBottom: 2 }} color={'#5e6977'} />
-            <Text name='Notifications' style={{fontSize: 11}}>Notifications</Text>
+            <Icon
+              name="comments"
+              type="font-awesome"
+              containerStyle={{
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 2
+              }}
+              color={"#5e6977"}
+            />
+            <Text name="Notifications" style={{ fontSize: 11 }}>
+              Notifications
+            </Text>
           </View>
         </Tabs>
       </View>
-
     );
   }
 
@@ -201,20 +231,21 @@ export default class HomeScreen extends React.Component {
 }
 
 HomeScreen.navigationOptions = {
-  header: <View style={searchStyle.header}>
-    <View>
-      <SearchBar lightTheme
-        placeholder='Search bids' />
+  header: (
+    <View style={searchStyle.header}>
+      <View>
+        <SearchBar lightTheme placeholder="Search bids" />
+      </View>
     </View>
-  </View>
-}
+  )
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
     paddingTop: 5
   }
 });
