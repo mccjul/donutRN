@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import {
   Text,
   View,
@@ -39,7 +40,7 @@ export default class HomeScreen extends React.Component {
   componentDidMount() {
     setInterval(() => {
       this.setState({
-        curTime: new Date().toLocaleString()
+        curTime: moment(new Date()).format("YYYY-MM-DD hh:mm:ss")
       });
     }, 1000);
   }
@@ -64,7 +65,7 @@ export default class HomeScreen extends React.Component {
                   "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg",
                 name: "White Mug",
                 price: "5",
-                timestamp: "14/02/2018"
+                timestamp: "2018-01-30 01:20:30"
               },
               {
                 itemId: "2",
@@ -72,7 +73,7 @@ export default class HomeScreen extends React.Component {
                   "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
                 name: "Dices",
                 price: "2",
-                timestamp: "14/02/2018"
+                timestamp: "2018-01-31 01:20:30"
               },
               {
                 itemId: "3",
@@ -80,7 +81,7 @@ export default class HomeScreen extends React.Component {
                   "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
                 name: "Dices",
                 price: "2",
-                timestamp: "14/02/2018"
+                timestamp: "2018-02-01 01:20:30"
               },
               {
                 itemId: "4",
@@ -88,7 +89,7 @@ export default class HomeScreen extends React.Component {
                   "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
                 name: "Dices",
                 price: "2",
-                timestamp: "14/02/2018"
+                timestamp: "2018-02-02 01:20:30"
               }
             ]}
             keyExtractor={item => item.itemId}
@@ -103,7 +104,9 @@ export default class HomeScreen extends React.Component {
                   marginRight: 10
                 }}
                 onPress={() => {
-                  this.props.navigation.navigate("MyDonut");
+                  this.props.navigation.navigate("Details", {
+                    id: item.itemId
+                  });
                 }}
               >
                 <View
@@ -113,7 +116,7 @@ export default class HomeScreen extends React.Component {
                     justifyContent: "flex-start"
                   }}
                 >
-                  <Text style={{ marginLeft: 10 }}>
+                  <Text style={{ marginLeft: 8, marginBottom: 3 }}>
                     $ {this.format(item.price)}
                   </Text>
                   <View
@@ -124,8 +127,10 @@ export default class HomeScreen extends React.Component {
                     }}
                   >
                     <Icon name="schedule" />
-                    <Text style={{ marginLeft: 10, marginTop: 2 }}>
-                      {this.state.curTime}
+                    <Text
+                      style={{ marginLeft: 10, marginTop: 2, color: "red" }}
+                    >
+                      {this.calculateTimeLeft(item.timestamp)}
                     </Text>
                   </View>
                 </View>
@@ -139,6 +144,23 @@ export default class HomeScreen extends React.Component {
 
   format = price => {
     return parseFloat(price).toFixed(2);
+  };
+
+  calculateTimeLeft = deadline => {
+    let diff = moment(deadline, "YYYY-MM-DD hh:mm:ss").diff(
+      moment(this.state.curTime, "YYYY-MM-DD hh:mm:ss"),
+      "days"
+    );
+    if (diff < 1) {
+      diff = moment(deadline, "YYYY-MM-DD hh:mm:ss").diff(
+        moment(this.state.curTime, "YYYY-MM-DD hh:mm:ss"),
+        "hours"
+      );
+
+      return diff <= 1 ? diff + " hour left" : diff + " hours left";
+    } else {
+      return diff == 1 ? diff + " day left" : diff + " days left";
+    }
   };
 
   _handlePress = () => {
