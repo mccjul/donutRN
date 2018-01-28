@@ -2902,6 +2902,10 @@ immediate@^3.2.2:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.2.3.tgz#d140fa8f614659bd6541233097ddaac25cdd991c"
 
+immutable@^3.8.1:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
+
 import-local@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/import-local/-/import-local-1.0.0.tgz#5e4ffdc03f4fe6c009c6729beb29631c2f8227bc"
@@ -4999,6 +5003,14 @@ react-native-gesture-handler@1.0.0-alpha.39:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-gesture-handler@^1.0.0-alpha.40:
+  version "1.0.0-alpha.40"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.0-alpha.40.tgz#b0eb2a158db1d38d2eee17d8600125dd82fa5989"
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+    invariant "^2.2.2"
+    prop-types "^15.5.10"
+
 react-native-maps@0.19.0:
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.19.0.tgz#ce94fad1cf360e335cb4338a68c95f791e869074"
@@ -5036,11 +5048,22 @@ react-native-scripts@1.11.1:
     color "^2.0.1"
     lodash "^4.16.6"
 
+react-native-tab-navigator@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/react-native-tab-navigator/-/react-native-tab-navigator-0.3.4.tgz#54a18f1ad06a09d4a0de81ff00416bc1b760c960"
+  dependencies:
+    immutable "^3.8.1"
+    prop-types "^15.5.10"
+
 react-native-tab-view@^0.0.74:
   version "0.0.74"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.74.tgz#62c0c882d9232b461ce181d440d683b4f99d1bd8"
   dependencies:
     prop-types "^15.6.0"
+
+react-native-tabs@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-tabs/-/react-native-tabs-1.0.9.tgz#75d3c35e8b5b6970869eab282372cb32e2a782cd"
 
 react-native-vector-icons@4.4.2:
   version "4.4.2"
