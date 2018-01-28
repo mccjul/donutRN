@@ -1,6 +1,25 @@
 import React from "react";
-import { Text, View, Image, Dimensions } from "react-native";
-import { Card, ListItem, Button } from "react-native-elements";
+import moment from "moment";
+import {
+  Text,
+  View,
+  Image,
+  FlatList,
+  renderItem,
+  Dimensions,
+  TextInput,
+  ScrollView
+} from "react-native";
+import {
+  SearchBar,
+  Card,
+  Button,
+  Header,
+  Badge,
+  Tile,
+  Divider,
+  Icon
+} from "react-native-elements";
 
 const { width, height } = Dimensions.get("window");
 
@@ -13,6 +32,7 @@ export default class DetailsScreen extends React.Component {
     super(props);
 
     this.state = {
+      curTime: moment(new Date()).format("YYYY-MM-DD hh:mm:ss"),
       data: []
     };
   }
@@ -27,7 +47,9 @@ export default class DetailsScreen extends React.Component {
         "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg",
       name: "White Mug",
       price: "5",
-      timestamp: "2018-01-30 01:20:30"
+      timestamp: "2018-01-30 01:20:30",
+      currentBidder: "John",
+      charity: "UNICEF"
     };
 
     this.setState({ data: data });
@@ -44,7 +66,19 @@ export default class DetailsScreen extends React.Component {
         />
         <Card containerStyle={{ width: width }} title={this.state.data.name}>
           <Text> $ {this.format(this.state.data.price)}</Text>
+          <Text> Current Bidder: {this.state.data.currentBidder}</Text>
+          <Text style={{ marginTop: 2, color: "red" }}>
+            Closing date:
+            {moment(this.state.data.timestamp, "YYYY-MM-DD hh:mm:ss").format(
+              "MMMM Do YYYY, h:mm:ss a"
+            )}
+          </Text>
+          <Text>Charity : {this.state.data.charity}</Text>
         </Card>
+        <Button
+          buttonStyle={{ backgroundColor: "#297373", width: width }}
+          title="BID"
+        />
       </View>
     );
   }
