@@ -77,7 +77,7 @@ export default class HomeScreen extends React.Component {
               {
                 itemId: "1",
                 url:
-                  "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg",
+                  "https://images.crateandbarrel.com/is/image/Crate/EverdayMugsCHF15",
                 name: "White Mug",
                 price: "5",
                 timestamp: "2018-01-30 01:20:30"
@@ -85,7 +85,7 @@ export default class HomeScreen extends React.Component {
               {
                 itemId: "2",
                 url:
-                  "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
+                  "https://ae01.alicdn.com/kf/HTB10_CEMVXXXXXCXFXXq6xXFXXX8/40PCS-4-Colors-Digital-Dice-Top-Quality-Acrylic-Drinking-Dice-Entertainment-Toy-Gambling-Dice-6-Sides.jpg",
                 name: "Dices",
                 price: "2",
                 timestamp: "2018-01-31 01:20:30"
