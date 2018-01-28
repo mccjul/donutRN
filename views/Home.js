@@ -6,22 +6,32 @@ import {
   FlatList,
   renderItem,
   Dimensions,
-  TextInput
+  TextInput,
+  StyleSheet
 } from "react-native";
-import { Searchbar } from "react-native-elements";
+import { Header, Searchbar, SearchBar } from "react-native-elements";
+import { StackNavigator } from 'react-navigation'; 
+import { Constants } from 'expo';
+
+const searchStyle = StyleSheet.create({
+  header: {
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#e1e8ee',
+  },
+});
 
 const data = ["this"];
 
 const { width, height } = Dimensions.get("window");
 
 export default class HomeScreen extends React.Component {
-  // static navigationOptions = {
-  //   title: "Home"
-  // };
+  static navigationOptions = {
+    title: "Home",
+    header: null
+  };
 
   constructor(props) {
     super(props);
-    this.state = { text: "Useless Placeholder" };
   }
 
   render() {
@@ -67,10 +77,8 @@ export default class HomeScreen extends React.Component {
   };
 }
 
-// class Box extends React.Component{
-//   render(){
-//     return(
-
-//     );
-//   }
-// }
+HomeScreen.navigationOptions = {
+  header: <View style={searchStyle.header}>
+    <SearchBar lightTheme/>
+  </View>
+}
