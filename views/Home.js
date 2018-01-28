@@ -155,18 +155,25 @@ export default class HomeScreen extends React.Component {
             )}
           />
         </ScrollView>
-        <Tabs selected={this.state.page} style={{ backgroundColor: 'white' }}>
+        <Tabs selected={this.state.page} style={{ backgroundColor: 'white' }} onSelect={el=>this.props.navigation.navigate(el.props.name)}>
           <View>
-            <Icon name="gift" type="font-awesome" containerStyle={{ justifyContent: 'center', alignItems: 'center', marginBottom: 2 }} color={'#ff880a'} />
-            <Text name='Donations' style={{color: '#ff880a', fontSize: 11}}>Donations</Text>
+            <Icon name="home" type="font-awesome" containerStyle={{ justifyContent: 'center', alignItems: 'center', marginBottom: 2 }} color={'#ff880a'} />
+            <Text name='Home' style={{ color: '#ff880a', fontSize: 11 }}>Home</Text>
           </View>
-          <View>
+          <View name="Donate">
+            <Image
+              style={{ width: 26, height: 26, alignItems: 'center', justifyContent: 'center'}}
+              source={require('../img/black.png')}
+            />
+            <Text name='Donate' style={{ fontSize: 11, alignItems: 'center' }}>Donate</Text>
+          </View>
+          <View name="Bids">
             <Icon name="ticket" type="font-awesome" containerStyle={{ justifyContent: 'center', alignItems: 'center', marginBottom: 2 }} color={'#5e6977'} />
-            <Text name='Bids' style={{fontSize: 11}}>Bids</Text>
+            <Text name='Bids' style={{ fontSize: 11 }}>Bids</Text>
           </View>
-          <View>
+          <View name="Notifications">
             <Icon name="comments" type="font-awesome" containerStyle={{ justifyContent: 'center', alignItems: 'center', marginBottom: 2 }} color={'#5e6977'} />
-            <Text name='Notifications' style={{fontSize: 11}}>Notifications</Text>
+            <Text name='Notifications' style={{ fontSize: 11 }}>Notifications</Text>
           </View>
         </Tabs>
       </View>
