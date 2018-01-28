@@ -93,7 +93,7 @@ export default class HomeScreen extends React.Component {
               {
                 itemId: "3",
                 url:
-                  "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
+                  "https://ae01.alicdn.com/kf/HTB1wexJOXXXXXamaXXXq6xXFXXX0/7Pcs-set-Glitter-Shine-TRPG-Game-Dices-For-Dungeons-Dragons-D4-D20-Multi-Sides-Dice-4.jpg",
                 name: "Dices",
                 price: "2",
                 timestamp: "2018-02-01 01:20:30"
@@ -101,7 +101,7 @@ export default class HomeScreen extends React.Component {
               {
                 itemId: "4",
                 url:
-                  "https://images-na.ssl-images-amazon.com/images/I/81tlnWRchdL._SL1500_.jpg",
+                  "https://ae01.alicdn.com/kf/HTB1irhLQpXXXXbJXVXXq6xXFXXXc/6pcs-Set-16mm-Square-Dice-Gaming-Dices-Playing-Single-Side-Number-1-6-Dot-Cool-For.jpg_640x640.jpg",
                 name: "Dices",
                 price: "2",
                 timestamp: "2018-02-02 01:20:30"
