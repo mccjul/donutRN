@@ -44,7 +44,7 @@ export default class DetailsScreen extends React.Component {
     var data = {
       itemId: itemId,
       url:
-        "https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg",
+      "https://images.crateandbarrel.com/is/image/Crate/EverdayMugsCHF15",
       name: "White Mug",
       price: "5",
       timestamp: "2018-01-30 01:20:30",
