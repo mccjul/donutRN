@@ -77,7 +77,12 @@ export default class DetailsScreen extends React.Component {
         </Card>
         <Button
           buttonStyle={{ backgroundColor: "#297373", width: width }}
-          title="BID"
+          title="BID NOW!"
+          onPress={() => {
+            this.props.navigation.navigate("Bid", {
+              id: this.state.data.itemId
+            });
+          }}
         />
       </View>
     );
